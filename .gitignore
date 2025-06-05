@@ -1,0 +1,27 @@
+# File di cache e cronologia
+.cache/
+.bash_history
+.lesshst
+.wget-hsts
+
+# Cartelle di configurazione personali
+.ssh/
+.ollama/
+
+# File di configurazione locali e profili
+.bashrc
+.cloud-locale-test.skip
+.env
+.gitconfig
+.profile
+
+# Virtual environment Python
+venv/
+
+# File temporanei, di sistema o di editor (aggiunte comuni)
+*.swp
+*.swo
+*.tmp
+*.log
+__pycache__/
+*.pyc

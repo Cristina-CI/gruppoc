@@ -1,0 +1,30 @@
+services:
+
+  ollama:
+    volumes:
+      - ollama:/root/.ollama
+    container_name: ollama
+    network_mode: host
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "8080:8080"
+    network_mode: host
+    environment:
+      - OLLAMA_BASE_URL=http://127.0.0.1:11434
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - open-webui:/app/backend/data
+    restart: unless-stopped
+    depends_on:
+      - ollama
+
+volumes:
+  open-webui:
+  ollama:
